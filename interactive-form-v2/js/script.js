@@ -128,7 +128,7 @@ selectMethod.addEventListener('change', (e)=>{
 
 //Form validation
 function isValidUsername(username){
-    return /\S+/.test(username);
+    return /^\S+$/i.test(username);
 }
 
 const email = document.getElementById('mail');
@@ -136,14 +136,28 @@ function isValidEmail(email){
     return /^[^@]+@[^@.]+\.\w+$/i.test(email);
 }
 
+// function isValidActivity(){
+//     let boxChecked = 0;
+//     for(let i=0; i<checkbox.length; i++){
+//         if (checkbox[i].checked){
+//             boxChecked += 1;
+//         }
+//     }
+//     if(boxChecked !== 0){
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
+
+
 function isValidActivity(){
     for(let i=0; i<checkbox.length; i++){
         if (checkbox[i].checked){
             return true;
-        } else {
-            return false;
-        }
+        } 
     }
+    return false;
 }
 
 const ccnum = document.getElementById('cc-num');
@@ -200,7 +214,7 @@ form.addEventListener('submit', (e)=>{
         showOrHideTip(true, username.nextElementSibling);
         e.preventDefault();
     } 
-    if(!isValidEmail(email.input)) {
+    if(!isValidEmail(email.value)) {
         showOrHideTip(true, email.nextElementSibling);
         e.preventDefault();
     }
@@ -214,16 +228,16 @@ form.addEventListener('submit', (e)=>{
             p.style.display = 'block';
             e.preventDefault();
             ccnum.nextElementSibling.style.display = 'none';
-        } else if(!isValidCcNum(ccnum.input)){
+        } else if(!isValidCcNum(ccnum.value)){
             showOrHideTip(true, ccnum.nextElementSibling);
             p.style.display = 'none';
             e.preventDefault();
         }
-        if(!isValidZipCode(zipcode.input)){
+        if(!isValidZipCode(zipcode.value)){
             showOrHideTip(true, zipcode.nextElementSibling);
             e.preventDefault();
         } 
-        if(!isValidCVV(cvv.input)){
+        if(!isValidCVV(cvv.value)){
             showOrHideTip(true, cvv.nextElementSibling);
             e.preventDefault();
         } 
