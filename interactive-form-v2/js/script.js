@@ -223,7 +223,6 @@ form.addEventListener('submit', (e)=>{
         e.preventDefault();
     } else {
         showOrHideTip(false, activities.children[1]);
-        e.preventDefault();
     }
     if(paymentOptions[1].selected){
         
@@ -237,7 +236,6 @@ form.addEventListener('submit', (e)=>{
             e.preventDefault();
         } else{
             showOrHideTip(false, ccnum.nextElementSibling);
-            e.preventDefault();
             p.style.display = 'none';
         }
         if(!isValidZipCode(zipcode.value)){
@@ -245,14 +243,12 @@ form.addEventListener('submit', (e)=>{
             e.preventDefault();
         }  else {
             showOrHideTip(false, zipcode.nextElementSibling);
-            e.preventDefault();
         }
         if(!isValidCVV(cvv.value)){
             showOrHideTip(true, cvv.nextElementSibling);
             e.preventDefault();
         } else {
             showOrHideTip(false, cvv.nextElementSibling);
-            e.preventDefault();
         }
     }
 })
